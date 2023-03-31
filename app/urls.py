@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from short_urls.views import UrlCreate, UrlRetrive
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('create/', UrlCreate.as_view()),
+    path('short-url/<str:short_url_hash>/', UrlRetrive.as_view()),
 ]
