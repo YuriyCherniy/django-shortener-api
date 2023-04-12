@@ -1,3 +1,5 @@
+from django.contrib.auth import get_user_model
+
 from rest_framework import serializers
 
 from hashids import Hashids
@@ -11,8 +13,8 @@ hashids = Hashids()
 class UrlSerializer(serializers.ModelSerializer):
     class Meta:
         model = Url
-        fields = ('id', 'long_url', 'short_url_hash', 'created')
-        read_only_fields = ('id', 'short_url_hash', 'created')
+        fields = ('id', 'long_url', 'short_url_hash', 'user', 'created')
+        read_only_fields = ('id', 'short_url_hash', 'user', 'created')
     
     def create(self, validated_data):
         instance = super().create(validated_data)
